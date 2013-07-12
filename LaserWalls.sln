@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaserWalls", "LaserWalls\LaserWalls\LaserWalls.csproj", "{DBBA52F9-FE15-4DC4-8059-714A0B635A6D}"
 EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "LaserWallsContent", "LaserWalls\LaserWallsContent\LaserWallsContent.contentproj", "{93D79EA1-C63D-4B0D-BCE7-60A336F2127C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaserWallsContent", "LaserWalls\LaserWallsContent\LaserWallsContent.contentproj", "{93D79EA1-C63D-4B0D-BCE7-60A336F2127C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
