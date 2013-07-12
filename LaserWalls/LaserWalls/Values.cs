@@ -7,7 +7,7 @@ using System.Text;
 
 namespace LaserWalls
 {
-    public enum Direction
+    public enum Directions
     {
         Up, Down, Left, Right
     };
