@@ -7,11 +7,12 @@ namespace LaserWalls
 {
     class Player
     {
-        private Directions Direction;    // Direction the play is heading in
+        public Directions Direction;    // Direction the play is heading in
         public float speed { get; set; } // Player speed
-        public int lives { set; }        // Number of lives left
-        public bool active { get; }      // Player state, if true display the player
-        
+        public int lives { get; set; }        // Number of lives left
+        public bool active { get; set; }      // Player state, if true display the player
+        public Vector2 Position;         // Position of the player
+
         // Pairs a direction with its matching texture
         Dictionary<Directions, Texture2D> Textures;
 
@@ -32,15 +33,13 @@ namespace LaserWalls
         /// A list of textures must be passed in the order:
         ///     Up, Down, Left, Right
         /// </summary>
-        /// <param name="_Direction">Initial direction</param>
-        /// <param name="Textures">Player's textures (Up, Down, Left Right)</param>
-        /// <param name="_lives">Initial number of lives</param>
-        /// <param name="_speed">Initial speed</param>
-        public void Initialize(Directions _Direction, List<Texture2D> _Textures, int _lives, float _speed)
+        public void Initialize(Directions _Direction, List<Texture2D> _Textures, Vector2 _position, int _lives, float _speed)
         {
             Direction = _Direction;
             lives = _lives;
             speed = _speed;
+            Position = _position;
+            Textures = new Dictionary<Directions, Texture2D>();
 
             // Load the textures
             Directions d = Directions.Up;
@@ -60,8 +59,27 @@ namespace LaserWalls
         /// <summary>
         /// Draws the Player to the screen
         /// </summary>
-        public void Draw()
+        public void Draw(SpriteBatch spriteBatch)
         {
+            switch (Direction)
+            {
+                case Directions.Up:
+                    spriteBatch.Draw(Textures[Directions.Up], Position, null, Color.White, 0f, 
+                                     new Vector2(Width / 2, Heighth / 2), 1f, SpriteEffects.None, 0f);
+                    break;
+                case Directions.Down:
+                    spriteBatch.Draw(Textures[Directions.Down], Position, null, Color.White, 0f,
+                                     new Vector2(Width / 2, Heighth / 2), 1f, SpriteEffects.None, 0f);
+                    break;
+                case Directions.Left:
+                    spriteBatch.Draw(Textures[Directions.Left], Position, null, Color.White, 0f,
+                                     new Vector2(Width / 2, Heighth / 2), 1f, SpriteEffects.None, 0f);
+                    break;
+                case Directions.Right:
+                    spriteBatch.Draw(Textures[Directions.Right], Position, null, Color.White, 0f,
+                                     new Vector2(Width / 2, Heighth / 2), 1f, SpriteEffects.None, 0f);
+                    break;
+            }
         }
     }
 }

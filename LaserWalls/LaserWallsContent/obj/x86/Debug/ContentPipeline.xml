@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>EnemyDown.png</Source>
+      <Name>EnemyDown</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Hikaru\Documents\Visual Studio 2010\Projects\LaserWalls\LaserWalls\LaserWalls\bin\x86\Debug\Content\EnemyDown.xnb</Output>
+      <Time>2013-07-11T18:30:17.7076825-06:00</Time>
+    </Item>
+    <Item>
+      <Source>EnemyLeft.png</Source>
+      <Name>EnemyLeft</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Hikaru\Documents\Visual Studio 2010\Projects\LaserWalls\LaserWalls\LaserWalls\bin\x86\Debug\Content\EnemyLeft.xnb</Output>
+      <Time>2013-07-11T18:30:17.7096827-06:00</Time>
+    </Item>
+    <Item>
+      <Source>EnemyRight.png</Source>
+      <Name>EnemyRight</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Hikaru\Documents\Visual Studio 2010\Projects\LaserWalls\LaserWalls\LaserWalls\bin\x86\Debug\Content\EnemyRight.xnb</Output>
+      <Time>2013-07-11T18:30:17.6876814-06:00</Time>
+    </Item>
+    <Item>
+      <Source>EnemyUp.png</Source>
+      <Name>EnemyUp</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Hikaru\Documents\Visual Studio 2010\Projects\LaserWalls\LaserWalls\LaserWalls\bin\x86\Debug\Content\EnemyUp.xnb</Output>
+      <Time>2013-07-11T18:30:17.6946818-06:00</Time>
+    </Item>
+    <Item>
+      <Source>ShipDown.png</Source>
+      <Name>ShipDown</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Hikaru\Documents\Visual Studio 2010\Projects\LaserWalls\LaserWalls\LaserWalls\bin\x86\Debug\Content\ShipDown.xnb</Output>
+      <Time>2013-07-11T18:30:17.6966819-06:00</Time>
+    </Item>
+    <Item>
+      <Source>ShipLeft.png</Source>
+      <Name>ShipLeft</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Hikaru\Documents\Visual Studio 2010\Projects\LaserWalls\LaserWalls\LaserWalls\bin\x86\Debug\Content\ShipLeft.xnb</Output>
+      <Time>2013-07-11T18:30:17.6996821-06:00</Time>
+    </Item>
+    <Item>
+      <Source>ShipRight.png</Source>
+      <Name>ShipRight</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Hikaru\Documents\Visual Studio 2010\Projects\LaserWalls\LaserWalls\LaserWalls\bin\x86\Debug\Content\ShipRight.xnb</Output>
+      <Time>2013-07-11T18:30:17.7026823-06:00</Time>
+    </Item>
+    <Item>
+      <Source>ShipUp.png</Source>
+      <Name>ShipUp</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Hikaru\Documents\Visual Studio 2010\Projects\LaserWalls\LaserWalls\LaserWalls\bin\x86\Debug\Content\ShipUp.xnb</Output>
+      <Time>2013-07-11T18:30:17.7046824-06:00</Time>
+    </Item>
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <TargetPlatform>Windows</TargetPlatform>
+      <TargetProfile>HiDef</TargetProfile>
+      <BuildConfiguration>Debug</BuildConfiguration>
+      <CompressContent>false</CompressContent>
+      <RootDirectory>C:\Users\Hikaru\Documents\Visual Studio 2010\Projects\LaserWalls\LaserWalls\LaserWallsContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Hikaru\Documents\Visual Studio 2010\Projects\LaserWalls\LaserWalls\LaserWalls\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Hikaru\Documents\Visual Studio 2010\Projects\LaserWalls\LaserWalls\LaserWallsContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Hikaru\Documents\Visual Studio 2010\Projects\LaserWalls\LaserWalls\LaserWalls\bin\x86\Debug\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2010-08-23T12:41:18-06:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
+        <Value>2010-08-23T12:41:18-06:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2010-08-23T12:41:18-06:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2010-08-23T12:41:18-06:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2010-08-23T12:41:18-06:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2010-08-23T12:41:18-06:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2013-05-22T17:59:16.3809253-06:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>

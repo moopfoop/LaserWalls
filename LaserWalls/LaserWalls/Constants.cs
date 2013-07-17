@@ -12,7 +12,7 @@ namespace LaserWalls
         Up, Down, Left, Right
     };
 
-    class Values
+    class Constants
     {
     }
 }

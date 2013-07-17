@@ -1,0 +1,8 @@
+Content\EnemyDown.xnb
+Content\EnemyLeft.xnb
+Content\EnemyRight.xnb
+Content\EnemyUp.xnb
+Content\ShipDown.xnb
+Content\ShipLeft.xnb
+Content\ShipRight.xnb
+Content\ShipUp.xnb

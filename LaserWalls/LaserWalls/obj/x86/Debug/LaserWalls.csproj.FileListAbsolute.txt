@@ -1,0 +1,14 @@
+C:\Users\Hikaru\Documents\Visual Studio 2010\Projects\LaserWalls\LaserWalls\LaserWalls\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Hikaru\Documents\Visual Studio 2010\Projects\LaserWalls\LaserWalls\LaserWalls\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Hikaru\Documents\Visual Studio 2010\Projects\LaserWalls\LaserWalls\LaserWalls\bin\x86\Debug\Content\EnemyDown.xnb
+C:\Users\Hikaru\Documents\Visual Studio 2010\Projects\LaserWalls\LaserWalls\LaserWalls\bin\x86\Debug\Content\EnemyLeft.xnb
+C:\Users\Hikaru\Documents\Visual Studio 2010\Projects\LaserWalls\LaserWalls\LaserWalls\bin\x86\Debug\Content\EnemyRight.xnb
+C:\Users\Hikaru\Documents\Visual Studio 2010\Projects\LaserWalls\LaserWalls\LaserWalls\bin\x86\Debug\Content\EnemyUp.xnb
+C:\Users\Hikaru\Documents\Visual Studio 2010\Projects\LaserWalls\LaserWalls\LaserWalls\bin\x86\Debug\Content\ShipDown.xnb
+C:\Users\Hikaru\Documents\Visual Studio 2010\Projects\LaserWalls\LaserWalls\LaserWalls\bin\x86\Debug\Content\ShipLeft.xnb
+C:\Users\Hikaru\Documents\Visual Studio 2010\Projects\LaserWalls\LaserWalls\LaserWalls\bin\x86\Debug\Content\ShipRight.xnb
+C:\Users\Hikaru\Documents\Visual Studio 2010\Projects\LaserWalls\LaserWalls\LaserWalls\bin\x86\Debug\Content\ShipUp.xnb
+C:\Users\Hikaru\Documents\Visual Studio 2010\Projects\LaserWalls\LaserWalls\LaserWalls\bin\x86\Debug\LaserWalls.exe
+C:\Users\Hikaru\Documents\Visual Studio 2010\Projects\LaserWalls\LaserWalls\LaserWalls\bin\x86\Debug\LaserWalls.pdb
+C:\Users\Hikaru\Documents\Visual Studio 2010\Projects\LaserWalls\LaserWalls\LaserWalls\obj\x86\Debug\LaserWalls.exe
+C:\Users\Hikaru\Documents\Visual Studio 2010\Projects\LaserWalls\LaserWalls\LaserWalls\obj\x86\Debug\LaserWalls.pdb
