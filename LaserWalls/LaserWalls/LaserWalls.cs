@@ -1,3 +1,17 @@
+// LaserWalls.cs
+// by Greg Berrett
+//
+// Represents the main loop of the game.  Initializes the components and makes
+// calls to update them to the screen.  Reads input from the keybaord and a
+// gamepad to update the player's state.
+//
+// Controls:
+// Up:          Up Arrow / Dpad.Up
+// Down:      Down Arrow / Dpad.Down
+// Left:      Left Arrow / Dpad.Left
+// Right:    Right Arrow / Dpad.Right
+// Accelerate: Space Bar / Button.A
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +28,7 @@ namespace LaserWalls
     /// <summary>
     /// This is the main type for your game
     /// </summary>
-    public class Game1 : Microsoft.Xna.Framework.Game
+    public class LaserWalls : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
@@ -25,11 +39,19 @@ namespace LaserWalls
         List<Texture2D> textures;  // List of player textures
         Player player;             // current player
 
-        Directions previousDirection;
+        Constants settings;  // List of constants used for settings
 
-        public Game1()
+        Directions previousDirection;  // player's previous Direction
+
+        public LaserWalls()
         {
             graphics = new GraphicsDeviceManager(this);
+
+            // Set to full screen
+            this.graphics.PreferredBackBufferWidth = 1920;
+            this.graphics.PreferredBackBufferHeight = 1080;
+            this.graphics.IsFullScreen = true;
+
             Content.RootDirectory = "Content";
         }
 
@@ -42,8 +64,11 @@ namespace LaserWalls
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            textures = new List<Texture2D>();
 
+            settings = new Constants();
+
+            // Initialize player
+            textures = new List<Texture2D>();
             player = new Player();
 
             base.Initialize();
@@ -63,7 +88,7 @@ namespace LaserWalls
             textures.Add(Content.Load<Texture2D>("ShipLeft"));
             textures.Add(Content.Load<Texture2D>("ShipRight"));
 
-            player.Initialize(Directions.Left, textures, new Vector2(100, 100), 3, 1f);
+            player.Initialize(Directions.Right, textures, new Vector2(100, 100), 3, settings.BaseSpeed);
 
             // TODO: use this.Content to load your game content here
         }
@@ -98,7 +123,14 @@ namespace LaserWalls
             // Update any input changes to the player
             UpdatePlayer();
 
+            // Moves the player along
+            player.Update();
+
             // TODO: Add your update logic here
+
+            // Check to see if game is exited
+            if (CheckExitKey())
+                ExitGame();
 
             base.Update(gameTime);
         }
@@ -150,6 +182,31 @@ namespace LaserWalls
                 player.Direction = newDirection;
             if (newDirection == Directions.Right && previousDirection != Directions.Left)
                 player.Direction = newDirection;
+
+            // Accelerates the player if gamepad.A or space bar is pressed, decelerates otherwise
+            if (keyboardState.IsKeyDown(Keys.Space) || gamePadState.IsButtonDown(Buttons.A))
+                player.Accelerate();
+            else
+                player.Decelerate();
+        }
+
+        /// <summary>
+        /// Checks for the Escape key in order to exit the game
+        /// </summary>
+        /// <returns>Returns true if the escape key is pressed, false otherwise</returns>
+        private bool CheckExitKey()
+        {
+            if (keyboardState.IsKeyDown(Keys.Escape))
+                return true;
+            return false;
+        }
+
+        /// <summary>
+        /// Exits the game
+        /// </summary>
+        private void ExitGame()
+        {
+            Exit();
         }
     }
 }

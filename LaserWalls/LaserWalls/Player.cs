@@ -1,4 +1,12 @@
-﻿using System;
+﻿// Player.cs
+// by Greg Berrett
+//
+// Represents the player.  Contains number of lives, speed, acceleration and deceleration rate
+// position, and direction of the player.  The player may only accelerate and decelerate to a
+// max and minimum speed.  The player is allowed only right hand turns and therefore cannot
+// turn a 180.
+
+using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -7,10 +15,12 @@ namespace LaserWalls
 {
     class Player
     {
-        public Directions Direction;    // Direction the play is heading in
+        public Directions Direction;     // Direction the play is heading in
         public float speed { get; set; } // Player speed
-        public int lives { get; set; }        // Number of lives left
-        public bool active { get; set; }      // Player state, if true display the player
+        private float baseSpeed;         // Base speed for deceleration limit
+        private float topSpeed;          // Max speed for acceleration limit
+        public int lives { get; set; }   // Number of lives left
+        public bool active { get; set; } // Player state, if true display the player
         public Vector2 Position;         // Position of the player
 
         // Pairs a direction with its matching texture
@@ -38,6 +48,8 @@ namespace LaserWalls
             Direction = _Direction;
             lives = _lives;
             speed = _speed;
+            baseSpeed = _speed;
+            topSpeed = baseSpeed * 4f;
             Position = _position;
             Textures = new Dictionary<Directions, Texture2D>();
 
@@ -54,6 +66,24 @@ namespace LaserWalls
         /// </summary>
         public void Update()
         {
+            // TODO:  Check for the edge of the screen
+
+            // Continues the player in the direction it is facing
+            switch (Direction)
+            {
+                case Directions.Up:
+                    Position.Y -= speed;
+                    break;
+                case Directions.Down:
+                    Position.Y += speed;
+                    break;
+                case Directions.Left:
+                    Position.X -= speed;
+                    break;
+                case Directions.Right:
+                    Position.X += speed;
+                    break;
+            }
         }
 
         /// <summary>
@@ -80,6 +110,24 @@ namespace LaserWalls
                                      new Vector2(Width / 2, Heighth / 2), 1f, SpriteEffects.None, 0f);
                     break;
             }
+        }
+
+        /// <summary>
+        /// Accelerates the player to the top speed
+        /// </summary>
+        public void Accelerate()
+        {
+            if (speed < topSpeed)
+                speed += 0.5f;
+        }
+
+        /// <summary>
+        /// Decelerates the player to base speed
+        /// </summary>
+        public void Decelerate()
+        {
+            if (speed > baseSpeed)
+                speed -= 0.25f;
         }
     }
 }

@@ -1,4 +1,7 @@
-﻿// Used to hold constants, enums and other custom defined multiclass values.
+﻿// Constants.cs
+// by Greg Berrett
+//
+// Used to hold constants, enums and other custom defined multiclass values.
 
 using System;
 using System.Collections.Generic;
@@ -14,5 +17,6 @@ namespace LaserWalls
 
     class Constants
     {
+        public float BaseSpeed = 5f;
     }
 }
