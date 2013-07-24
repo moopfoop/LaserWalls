@@ -73,6 +73,15 @@
       <Output>C:\Users\Hikaru\Documents\Visual Studio 2010\Projects\LaserWalls\LaserWalls\LaserWalls\bin\x86\Debug\Content\ShipUp.xnb</Output>
       <Time>2013-07-11T18:30:17.7046824-06:00</Time>
     </Item>
+    <Item>
+      <Source>Background.png</Source>
+      <Name>Background</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Hikaru\Documents\Visual Studio 2010\Projects\LaserWalls\LaserWalls\LaserWalls\bin\x86\Debug\Content\Background.xnb</Output>
+      <Time>2013-07-24T16:51:13.8846266-06:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

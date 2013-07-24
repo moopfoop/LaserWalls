@@ -6,3 +6,4 @@ Content\ShipDown.xnb
 Content\ShipLeft.xnb
 Content\ShipRight.xnb
 Content\ShipUp.xnb
+Content\Background.xnb

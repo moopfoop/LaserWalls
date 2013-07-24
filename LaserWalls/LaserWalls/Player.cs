@@ -45,6 +45,7 @@ namespace LaserWalls
         /// </summary>
         public void Initialize(Directions _Direction, List<Texture2D> _Textures, Vector2 _position, int _lives, float _speed)
         {
+            active = true;
             Direction = _Direction;
             lives = _lives;
             speed = _speed;
@@ -66,7 +67,9 @@ namespace LaserWalls
         /// </summary>
         public void Update()
         {
-            // TODO:  Check for the edge of the screen
+            // Verify the player is active before updating
+            if (!active)
+                return;
 
             // Continues the player in the direction it is facing
             switch (Direction)
@@ -91,6 +94,11 @@ namespace LaserWalls
         /// </summary>
         public void Draw(SpriteBatch spriteBatch)
         {
+            // Verify the player is active before drawing
+            if (!active)
+                return;
+
+            // Draws player based on direction player is traveling
             switch (Direction)
             {
                 case Directions.Up:

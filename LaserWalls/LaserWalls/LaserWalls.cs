@@ -35,11 +35,15 @@ namespace LaserWalls
 
         KeyboardState keyboardState;  // Keys pressed
         GamePadState gamePadState;    // Gamepad pressed
-        
+
+        Texture2D background;  // Background the game takes place on
+
         List<Texture2D> textures;  // List of player textures
         Player player;             // current player
 
         Constants settings;  // List of constants used for settings
+
+        Collision collisions;
 
         Directions previousDirection;  // player's previous Direction
 
@@ -71,6 +75,9 @@ namespace LaserWalls
             textures = new List<Texture2D>();
             player = new Player();
 
+            // Initialize collision detection
+            collisions = new Collision();
+
             base.Initialize();
         }
 
@@ -89,6 +96,9 @@ namespace LaserWalls
             textures.Add(Content.Load<Texture2D>("ShipRight"));
 
             player.Initialize(Directions.Right, textures, new Vector2(100, 100), 3, settings.BaseSpeed);
+
+            // Setup background
+            background = Content.Load<Texture2D>("Background");
 
             // TODO: use this.Content to load your game content here
         }
@@ -128,6 +138,13 @@ namespace LaserWalls
 
             // TODO: Add your update logic here
 
+            // Check for collisions
+            if (collisions.Detect(player))
+            {
+                DrawCollision();
+            }
+
+
             // Check to see if game is exited
             if (CheckExitKey())
                 ExitGame();
@@ -146,6 +163,10 @@ namespace LaserWalls
             // TODO: Add your drawing code here
             spriteBatch.Begin();
 
+            // Draw the background
+            spriteBatch.Draw(background, new Rectangle(0, 0, 1920, 1080), Color.White);
+
+            // Draw the player
             player.Draw(spriteBatch);
 
             spriteBatch.End();
@@ -207,6 +228,15 @@ namespace LaserWalls
         private void ExitGame()
         {
             Exit();
+        }
+
+        private void DrawCollision()
+        {
+            // Determine which object is no longer active
+            if (!player.active)
+            {
+                // TODO: explosion animation
+            }
         }
     }
 }
