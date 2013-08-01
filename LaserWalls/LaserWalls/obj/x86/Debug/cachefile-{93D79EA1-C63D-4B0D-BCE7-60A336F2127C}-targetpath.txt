@@ -7,3 +7,4 @@ Content\ShipLeft.xnb
 Content\ShipRight.xnb
 Content\ShipUp.xnb
 Content\Background.xnb
+Content\Wall.xnb

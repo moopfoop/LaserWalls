@@ -38,9 +38,12 @@ namespace LaserWalls
 
         Texture2D background;  // Background the game takes place on
 
-        List<Texture2D> textures;  // List of player textures
+        List<Texture2D> playerTextures;  // List of player textures
         Player player;             // current player
 
+        Texture2D wallTexture;  // Texture for the laser walls
+        List<Wall> walls;          // Contains all active walls
+        Wall currentWall;          // Currently deployed wall
         Constants settings;  // List of constants used for settings
 
         Collision collisions;
@@ -72,8 +75,12 @@ namespace LaserWalls
             settings = new Constants();
 
             // Initialize player
-            textures = new List<Texture2D>();
+            playerTextures = new List<Texture2D>();
             player = new Player();
+
+            // Initialize walls
+            walls = new List<Wall>();
+            currentWall = new Wall();
 
             // Initialize collision detection
             collisions = new Collision();
@@ -90,12 +97,17 @@ namespace LaserWalls
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
       
-            textures.Add(Content.Load<Texture2D>("ShipUp"));
-            textures.Add(Content.Load<Texture2D>("ShipDown"));
-            textures.Add(Content.Load<Texture2D>("ShipLeft"));
-            textures.Add(Content.Load<Texture2D>("ShipRight"));
+            // Loads texture for the player's ship
+            playerTextures.Add(Content.Load<Texture2D>("ShipUp"));
+            playerTextures.Add(Content.Load<Texture2D>("ShipDown"));
+            playerTextures.Add(Content.Load<Texture2D>("ShipLeft"));
+            playerTextures.Add(Content.Load<Texture2D>("ShipRight"));
 
-            player.Initialize(Directions.Right, textures, new Vector2(100, 100), 3, settings.BaseSpeed);
+            player.Initialize(Directions.Right, playerTextures, new Vector2(100, 100), 3, settings.BaseSpeed);
+
+            // TEST
+            wallTexture = Content.Load<Texture2D>("Wall");
+            currentWall.Initialize((int) player.Position.X, (int) player.Position.Y - 7, wallTexture);
 
             // Setup background
             background = Content.Load<Texture2D>("Background");
@@ -136,6 +148,10 @@ namespace LaserWalls
             // Moves the player along
             player.Update();
 
+            // Update current wall
+            UpdateWall();
+            
+
             // TODO: Add your update logic here
 
             // Check for collisions
@@ -169,6 +185,11 @@ namespace LaserWalls
             // Draw the player
             player.Draw(spriteBatch);
 
+            // Draw all the walls
+            currentWall.Draw(spriteBatch);
+            foreach (Wall wall in walls)
+                wall.Draw(spriteBatch);
+
             spriteBatch.End();
 
             base.Draw(gameTime);
@@ -179,6 +200,12 @@ namespace LaserWalls
         /// </summary>
         private void UpdatePlayer()
         {
+            // Accelerates the player if gamepad.A or space bar is pressed, decelerates otherwise
+            if (keyboardState.IsKeyDown(Keys.Space) || gamePadState.IsButtonDown(Buttons.A))
+                player.Accelerate();
+            else
+                player.Decelerate();
+
             // Since newDirection is nonnullable it is set to the previous direction which is
             // the state we are trying to detect a conflict with when a key is pressed.  This
             // keeps the player moving in the same direction.
@@ -194,21 +221,89 @@ namespace LaserWalls
             if (keyboardState.IsKeyDown(Keys.Right) || gamePadState.DPad.Right == ButtonState.Pressed)
                 newDirection = Directions.Right;
 
+            // State has not changed
+            if (newDirection == previousDirection)
+                return;
+
             // Check to verify the new direction is not 180 degree of the old direction
             if (newDirection == Directions.Up && previousDirection != Directions.Down)
-                player.Direction = newDirection;
+            {
+                player.ChangeDirection(newDirection);                
+                AddWall(newDirection);
+            }
             if (newDirection == Directions.Down && previousDirection != Directions.Up)
-                player.Direction = newDirection;
+            {
+                player.ChangeDirection(newDirection);
+                AddWall(newDirection);
+            }
             if (newDirection == Directions.Left && previousDirection != Directions.Right)
-                player.Direction = newDirection;
+            {
+                player.ChangeDirection(newDirection);
+                AddWall(newDirection);
+            }
             if (newDirection == Directions.Right && previousDirection != Directions.Left)
-                player.Direction = newDirection;
+            {
+                player.ChangeDirection(newDirection);
+                AddWall(newDirection);
+            }
 
-            // Accelerates the player if gamepad.A or space bar is pressed, decelerates otherwise
-            if (keyboardState.IsKeyDown(Keys.Space) || gamePadState.IsButtonDown(Buttons.A))
-                player.Accelerate();
-            else
-                player.Decelerate();
+            
+        }
+
+        /// <summary>
+        /// Adds walls to the screen as the player turns
+        /// </summary>
+        /// <param name="direction"></param>
+        private void AddWall(Directions direction)
+        {
+            Wall oldWall = currentWall;
+            
+            // Adds the current wall to the list of all previous walls and creates a new wall
+            walls.Add(currentWall);
+            currentWall = new Wall();
+
+            switch (direction)
+            {
+                case Directions.Up:
+                    currentWall.Initialize((int)player.Position.X - 10, (int)player.Position.Y - 7, wallTexture);
+                    oldWall.Turn((int)player.Position.X);
+                    break;
+                case Directions.Down:
+                    currentWall.Initialize((int)player.Position.X - 10, (int)player.Position.Y - 10, wallTexture);
+                    oldWall.Turn((int)player.Position.X);
+                    break;
+                case Directions.Left:
+                    currentWall.Initialize((int)player.Position.X + 10, (int)player.Position.Y - 7, wallTexture);
+                    oldWall.Turn((int)player.Position.Y);
+                    break;
+                case Directions.Right:
+                    currentWall.Initialize((int)player.Position.X - 10, (int)player.Position.Y - 7, wallTexture);
+                    oldWall.Turn((int)player.Position.Y);
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Updates the current active wall
+        /// </summary>
+        private void UpdateWall()
+        {
+            // Calculation are based on which direction the player is traveling
+            switch (player.Direction)
+            {
+                case Directions.Up:
+                    currentWall.Update(player.Direction, (int)player.Position.Y + player.Height / 2);
+                    break;
+                case Directions.Down:
+                    currentWall.Update(player.Direction, (int)player.Position.Y - player.Height / 2);
+                    break;
+                case Directions.Left:
+                    currentWall.Update(player.Direction, (int)player.Position.X + player.Width / 2);                    
+                    break;
+                case Directions.Right:
+                    currentWall.Update(player.Direction, (int)player.Position.X - player.Width / 2);
+                    break;                    
+            }
         }
 
         /// <summary>
@@ -230,6 +325,9 @@ namespace LaserWalls
             Exit();
         }
 
+        /// <summary>
+        /// Draws the collision animation
+        /// </summary>
         private void DrawCollision()
         {
             // Determine which object is no longer active

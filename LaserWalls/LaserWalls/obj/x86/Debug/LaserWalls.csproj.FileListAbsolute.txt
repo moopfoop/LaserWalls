@@ -13,3 +13,4 @@ C:\Users\Hikaru\Documents\Visual Studio 2010\Projects\LaserWalls\LaserWalls\Lase
 C:\Users\Hikaru\Documents\Visual Studio 2010\Projects\LaserWalls\LaserWalls\LaserWalls\obj\x86\Debug\LaserWalls.exe
 C:\Users\Hikaru\Documents\Visual Studio 2010\Projects\LaserWalls\LaserWalls\LaserWalls\obj\x86\Debug\LaserWalls.pdb
 C:\Users\Hikaru\Documents\Visual Studio 2010\Projects\LaserWalls\LaserWalls\LaserWalls\bin\x86\Debug\Content\Background.xnb
+C:\Users\Hikaru\Documents\Visual Studio 2010\Projects\LaserWalls\LaserWalls\LaserWalls\bin\x86\Debug\Content\Wall.xnb

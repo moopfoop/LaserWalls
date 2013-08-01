@@ -15,10 +15,10 @@ namespace LaserWalls
 {
     class Player
     {
-        public Directions Direction;     // Direction the play is heading in
         public float speed { get; set; } // Player speed
         private float baseSpeed;         // Base speed for deceleration limit
         private float topSpeed;          // Max speed for acceleration limit
+        private Directions direction;    // Direction the player is heading in
         public int lives { get; set; }   // Number of lives left
         public bool active { get; set; } // Player state, if true display the player
         public Vector2 Position;         // Position of the player
@@ -33,9 +33,15 @@ namespace LaserWalls
         }
 
         // Returns the heighth of the current direction's texture
-        public int Heighth
+        public int Height
         {
             get { return Textures[Direction].Width; }
+        }
+
+        // Public accessor of direction
+        public Directions Direction
+        {
+            get { return direction; }
         }
 
         /// <summary>
@@ -46,7 +52,7 @@ namespace LaserWalls
         public void Initialize(Directions _Direction, List<Texture2D> _Textures, Vector2 _position, int _lives, float _speed)
         {
             active = true;
-            Direction = _Direction;
+            direction = _Direction;
             lives = _lives;
             speed = _speed;
             baseSpeed = _speed;
@@ -103,19 +109,19 @@ namespace LaserWalls
             {
                 case Directions.Up:
                     spriteBatch.Draw(Textures[Directions.Up], Position, null, Color.White, 0f, 
-                                     new Vector2(Width / 2, Heighth / 2), 1f, SpriteEffects.None, 0f);
+                                     new Vector2(Width / 2, Height / 2), 1f, SpriteEffects.None, 0f);
                     break;
                 case Directions.Down:
                     spriteBatch.Draw(Textures[Directions.Down], Position, null, Color.White, 0f,
-                                     new Vector2(Width / 2, Heighth / 2), 1f, SpriteEffects.None, 0f);
+                                     new Vector2(Width / 2, Height / 2), 1f, SpriteEffects.None, 0f);
                     break;
                 case Directions.Left:
                     spriteBatch.Draw(Textures[Directions.Left], Position, null, Color.White, 0f,
-                                     new Vector2(Width / 2, Heighth / 2), 1f, SpriteEffects.None, 0f);
+                                     new Vector2(Width / 2, Height / 2), 1f, SpriteEffects.None, 0f);
                     break;
                 case Directions.Right:
                     spriteBatch.Draw(Textures[Directions.Right], Position, null, Color.White, 0f,
-                                     new Vector2(Width / 2, Heighth / 2), 1f, SpriteEffects.None, 0f);
+                                     new Vector2(Width / 2, Height / 2), 1f, SpriteEffects.None, 0f);
                     break;
             }
         }
@@ -136,6 +142,27 @@ namespace LaserWalls
         {
             if (speed > baseSpeed)
                 speed -= 0.25f;
+        }
+
+        public void ChangeDirection(Directions _direction)
+        {
+            direction = _direction;
+
+            switch (direction)
+            {
+                case Directions.Up:
+                    Position.Y -= 20;
+                    break;
+                case Directions.Down:
+                    Position.Y += 20;
+                    break;
+                case Directions.Left:
+                    Position.X -= 20;
+                    break;
+                case Directions.Right:
+                    Position.X += 20;
+                    break;
+            }
         }
     }
 }
